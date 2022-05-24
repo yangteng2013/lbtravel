@@ -18,6 +18,7 @@ import com.lymobility.shanglv.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
+
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 

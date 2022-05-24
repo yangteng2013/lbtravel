@@ -1,20 +1,13 @@
 package com.lymobility.shanglv.ui.home
 
 import android.content.Intent
-import android.net.wifi.hotspot2.pps.HomeSp
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
-import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kunminx.architecture.ui.page.DataBindingConfig
+import com.lymobility.shanglv.BR
 import com.lymobility.shanglv.R
 import com.lymobility.shanglv.base.BaseActivity
 import com.lymobility.shanglv.databinding.ActivityMainHomeBinding
@@ -22,10 +15,11 @@ import com.lymobility.shanglv.ui.home.ui.dashboard.DashboardFragment
 import com.lymobility.shanglv.ui.home.ui.home.HomeFragment
 import com.lymobility.shanglv.ui.home.ui.notifications.NotificationsFragment
 import com.lymobility.shanglv.ui.manager.ManagerActivity
+import com.lymobility.shanglv.ui.model.MainActivityViewModel
 import com.lymobility.shanglv.ui.travelrequest.TravelRequestActivity
 
 class MainHomeActivity : BaseActivity() {
-
+    private lateinit var mainActivityViewModel: MainActivityViewModel
     private lateinit var binding: ActivityMainHomeBinding
     private val _tag = MainHomeActivity::class.java.simpleName
 
@@ -55,11 +49,11 @@ class MainHomeActivity : BaseActivity() {
                     selectFragment = HomeFragment()
                 }
                 R.id.navigation_manager -> {
-                    startActivity(Intent(this,ManagerActivity::class.java))
+                    startActivity(Intent(this, ManagerActivity::class.java))
                     return@setOnItemSelectedListener false
                 }
                 R.id.navigation_make -> {
-                    startActivity(Intent(this,TravelRequestActivity::class.java))
+                    startActivity(Intent(this, TravelRequestActivity::class.java))
                     return@setOnItemSelectedListener false
                 }
                 R.id.navigation_dashboard -> {
@@ -79,11 +73,11 @@ class MainHomeActivity : BaseActivity() {
     }
 
     override fun initViewModel() {
-        TODO("Not yet implemented")
+        mainActivityViewModel = getActivityScopeViewModel(MainActivityViewModel::class.java)
     }
 
     override fun getDataBindingConfig(): DataBindingConfig {
-        TODO("Not yet implemented")
+        return DataBindingConfig(R.layout.main_activity, BR.vm, mainActivityViewModel)
     }
 
 

@@ -1,5 +1,6 @@
 package com.lymobility.shanglv
 
+import android.content.ClipboardManager
 import android.os.Build
 import android.os.Bundle
 import com.hjq.permissions.OnPermissionCallback
@@ -9,9 +10,16 @@ import com.kunminx.architecture.ui.page.DataBindingConfig
 import com.lymobility.shanglv.base.BaseActivity
 import com.lymobility.shanglv.ui.model.MainActivityViewModel
 import com.lymobility.shanglv.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
     private lateinit var mainActivityViewModel: MainActivityViewModel
+    @Inject
+    internal lateinit var clipboardManager: ClipboardManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,6 +40,7 @@ class MainActivity : BaseActivity() {
             initFragment(savedInstanceState)
         }
 
+        Timber.i("clipboardManager.hashCode:${clipboardManager.hashCode()}")
 
     }
 

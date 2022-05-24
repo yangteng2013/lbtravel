@@ -4,6 +4,17 @@ pluginManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url "https://developer.huawei.com/repo/" }
+
+        maven {
+            allowInsecureProtocol true
+            url "http://172.16.100.32:8081/nexus/content/repositories/thirdparty/"}
+        maven {
+            allowInsecureProtocol true
+            url "http://172.16.100.199:8081/nexus/content/repositories/thirdparty/"}
+        maven {
+            allowInsecureProtocol true
+            url "http://172.16.100.32:8081/nexus/content/groups/public/" }
     }
 }
 dependencyResolutionManagement {
@@ -12,7 +23,19 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+
+        maven { url "https://developer.huawei.com/repo/" }
+        maven {
+            allowInsecureProtocol true
+            url "http://172.16.100.32:8081/nexus/content/repositories/thirdparty/"}
+        maven {
+            allowInsecureProtocol true
+            url "http://172.16.100.199:8081/nexus/content/repositories/thirdparty/"}
+        maven {
+            allowInsecureProtocol true
+            url "http://172.16.100.32:8081/nexus/content/groups/public/" }
     }
 }
 rootProject.name = "lbtravel"
 include ':app'
+//include ':traningjetpack'
