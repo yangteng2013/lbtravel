@@ -77,9 +77,12 @@ dependencies {
     // https://mvnrepository.com/artifact/com.jakewharton.timber/timber
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
+// https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     implementation 'com.squareup.moshi:moshi:1.13.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
     implementation 'com.squareup.moshi:moshi-adapters:1.13.0'
     implementation 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
 
@@ -89,6 +92,10 @@ dependencies {
        https://mvnrepository.com/artifact/io.coil-kt/coil
      */
     implementation 'io.coil-kt:coil:2.1.0'
+
+    // https://mvnrepository.com/artifact/com.tencent/mmkv
+    implementation 'com.tencent:mmkv:1.2.13'
+
 
 
 
