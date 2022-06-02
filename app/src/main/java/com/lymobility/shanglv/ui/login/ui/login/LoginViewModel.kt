@@ -5,17 +5,32 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.lymobility.shanglv.R
+import com.lymobility.shanglv.base.BaseViewModel
+import com.lymobility.shanglv.base.launch
+import com.lymobility.shanglv.data.bean.ArticleData
+import com.lymobility.shanglv.data.bean.Employee
+import com.lymobility.shanglv.data.bean.LoadState
+import com.lymobility.shanglv.data.remote.Repository
+import com.lymobility.shanglv.data.remote.Response
 import com.lymobility.shanglv.ui.login.data.LoginRepository
 import com.lymobility.shanglv.ui.login.data.Result
 
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val loginRepository: LoginRepository) : BaseViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
+    val data = MutableLiveData<Response<Employee>>()
+    fun login2(username: String, password: String) = launch({
+        loadState.value = LoadState.Loading()
+        data.value = Repository.login(username,password)
+        loadState.value = LoadState.Success()
+    },{
+        loadState.value = LoadState.Fail()
+    })
 
     fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
@@ -41,7 +56,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains('@')) {
+        return if (username.contains('1')) {
             Patterns.EMAIL_ADDRESS.matcher(username).matches()
         } else {
             username.isNotBlank()
